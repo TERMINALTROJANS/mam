@@ -1,0 +1,79 @@
+;Additon of two 8 bit numbers
+
+data segment
+ a db 08H
+ b db 04H
+ c db ?
+data ends
+code segment
+assume cs:code,ds:data
+start:
+ mov ax,data
+ mov ds,ax
+ mov al,a
+ mov bl,b
+ add al,bl
+ mov c,al
+code ends
+end start
+
+
+;Multiplication of two 8 bit numbers
+
+data segment
+a dw 02h
+b dw 07h
+c dw ?
+data ends
+ 
+code segment
+assume cs:code,ds:data
+start:
+mov ax,data
+mov ds,ax
+mov ax,a
+mov bx,b
+mul bx
+mov c,ax
+code ends
+end start
+
+
+;Subtraction of two 8 bit numbers
+
+data segment
+ a db 09H
+ b db 02H
+ c db ?
+data ends
+code segment
+assume cs:code,ds:data
+start:
+ mov ax,data
+ mov ds,ax
+ mov al,a
+ mov bl,b
+ sub al,bl
+ mov c,al
+code ends
+end start
+
+
+;sum of even numbers
+mov cl,05h
+mov al,02h
+mov bl,00h
+
+l1: add bl,02h
+    add al,bl
+    loop l1
+    
+
+
+;factorial
+mov cl,05h
+mov al,01h
+l1: mul cl
+    loop l1
+    
+mov [3000h],al
